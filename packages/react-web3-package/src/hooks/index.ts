@@ -1,1 +1,1 @@
-export { useOwnedTokens } from './useOwnedTokens'
+export { useTokensQuery } from './useTokensQuery'
