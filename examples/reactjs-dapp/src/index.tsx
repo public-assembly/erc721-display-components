@@ -1,12 +1,11 @@
 import ReactDOM from 'react-dom/client'
 import { App } from './App'
-import { ExampleImports } from './components/example/ExampleImports'
 
 const domContainer = document.getElementById('main')
 const root = ReactDOM.createRoot(domContainer)
 
 root.render(
   <App>
-    <ExampleImports />
+    <span>React Component</span>
   </App>
 )
