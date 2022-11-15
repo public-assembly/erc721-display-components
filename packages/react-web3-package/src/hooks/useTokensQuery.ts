@@ -15,10 +15,14 @@ import useSWRInfinite from 'swr/infinite'
 const PAGE_SIZE = 24
 
 export type UseTokenQueryProps = {
-  contractWhiteList?: string[] | undefined
+  /**
+   * contractWhiteList: array of contract addresses
+   * @default: undefined
+   */
+  contractWhiteList?: string[]
   contractAddress?: string | string[] | null
+  chainId?: '1' | '5'
   ownerAddress?: string
-  initialData?: NFTObject[]
   sort?: TokenSortInput
   filter?: TokensQueryFilter
   where?: TokensQueryInput
@@ -29,44 +33,44 @@ export type UseTokenQueryProps = {
   pageSize?: number
 }
 
-const zdk = new ZDK({
-  endpoint: 'https://api.zora.co/graphql',
-  apiKey: process.env.NEXT_PUBLIC_ZORA_API_KEY,
-  networks: [
-    {
-      chain: ZDKChain.Goerli,
-      network: ZDKNetwork.Ethereum,
-    },
-  ],
-})
-
 type GetNFTReturnType = {
   tokens: NFTObject[]
   nextCursor?: string | null
 }
 
-async function getNFTs(query: TokensQueryArgs): Promise<GetNFTReturnType> {
-  const resp = await zdk.tokens(query)
-  const tokens = resp.tokens.nodes
-    /* @ts-ignore */
-    .map((token) => transformNFTZDK(token, { rawData: token }))
-    .map(prepareJson)
-  return {
-    tokens,
-    nextCursor: resp.tokens.pageInfo.endCursor,
-  }
-}
-
 export function useTokensQuery({
   contractWhiteList,
   contractAddress,
+  chainId = '1',
   ownerAddress,
   sort,
   filter,
   where,
   pageSize = PAGE_SIZE,
-}: // initialData,
-UseTokenQueryProps) {
+}: UseTokenQueryProps) {
+  const zdk = new ZDK({
+    endpoint: 'https://api.zora.co/graphql',
+    apiKey: process.env.NEXT_PUBLIC_ZORA_API_KEY,
+    networks: [
+      {
+        chain: ZDKChain[`${chainId === '5' ? 'Goerli' : 'Mainnet'}`],
+        network: ZDKNetwork.Ethereum,
+      },
+    ],
+  })
+
+  async function getNFTs(query: TokensQueryArgs): Promise<GetNFTReturnType> {
+    const resp = await zdk.tokens(query)
+    const tokens = resp.tokens.nodes
+      /* @ts-ignore */
+      .map((token) => transformNFTZDK(token, { rawData: token }))
+      .map(prepareJson)
+    return {
+      tokens,
+      nextCursor: resp.tokens.pageInfo.endCursor,
+    }
+  }
+
   const getKey = (pageIndex: number, previousPageData: GetNFTReturnType) => {
     if (pageIndex > 0 && !previousPageData.nextCursor) return null
     return {

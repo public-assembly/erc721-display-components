@@ -7,12 +7,14 @@ import { NFTGridLoadMore } from './NFTGridLoadMore'
 export function NFTGrid({
   contractAddress,
   ownerAddress,
+  chainId = '1',
   pageSize = 15,
   useIntersectionObserver = false,
   nftRenderer,
 }: {
   contractAddress?: string
   ownerAddress?: string
+  chainId?: '1' | '5'
   pageSize?: number
   useIntersectionObserver?: boolean
   nftRenderer: React.ReactNode
@@ -21,6 +23,7 @@ export function NFTGrid({
     contractAddress: contractAddress,
     ownerAddress: ownerAddress,
     pageSize: pageSize,
+    chainId: chainId,
   })
 
   return (
@@ -32,7 +35,7 @@ export function NFTGrid({
               key={`${nft?.nft?.contract.address}-${nft?.nft?.tokenId}`}
               contractAddress={nft?.nft?.contract.address}
               tokenId={nft?.nft?.tokenId}
-              initialData={nft}>
+              nft={nft}>
               {nftRenderer}
             </NFTProvider>
           ))}

@@ -12,16 +12,21 @@ function NFTCard() {
 }
 
 export default function OwnerGrid() {
-  const { address, displayName } = useAuth()
+  const { address, displayName, chain } = useAuth()
   return (
-    <div className="flex flex-col">
-      <h1>{displayName}</h1>
-      {address &&
-        <NFTGrid
-          ownerAddress={address}
-          nftRenderer={<NFTCard />}
-        />
-      }
+    <div className="flex flex-col relative">
+      <div className="sticky top-4 z-50 pb-4">
+        <h1 className="text-xl py-2 px-3" style={{backgroundColor: 'yellow'}}>{chain?.name} NFTs | {displayName}</h1>
+      </div>
+      <div className="relative z-10">
+        {address &&
+          <NFTGrid
+            pageSize={12}
+            ownerAddress={address}
+            nftRenderer={<NFTCard />}
+          />
+        }
+      </div>
     </div>
   )
 }
