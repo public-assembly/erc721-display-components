@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^0.6.0",
-    "@zoralabs/nft-hooks": "^1.1.9",
-    "@zoralabs/zdk": "^2.1.8",
+    "@zoralabs/nft-hooks": "^1.1.10",
+    "@zoralabs/zdk": "^2.2.0",
     "ethers": "^5.7.1",
     "graphql-request": "^5.0.0",
     "lodash": "^4.17.21",

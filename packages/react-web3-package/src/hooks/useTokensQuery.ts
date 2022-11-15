@@ -3,7 +3,7 @@ import { getAddress } from '@ethersproject/address'
 import { transformNFTZDK } from '@zoralabs/nft-hooks/dist/backends'
 import { prepareJson } from '@zoralabs/nft-hooks/dist/fetcher/NextUtils'
 import { NFTObject } from '@zoralabs/nft-hooks/dist/types/NFTInterface'
-import { TokensQueryArgs, ZDK } from '@zoralabs/zdk'
+import { TokensQueryArgs, ZDK, ZDKChain, ZDKNetwork } from '@zoralabs/zdk'
 import {
   TokenSortInput,
   TokensQueryFilter,
@@ -32,6 +32,12 @@ export type UseTokenQueryProps = {
 const zdk = new ZDK({
   endpoint: 'https://api.zora.co/graphql',
   apiKey: process.env.NEXT_PUBLIC_ZORA_API_KEY,
+  networks: [
+    {
+      chain: ZDKChain.Goerli,
+      network: ZDKNetwork.Ethereum,
+    },
+  ],
 })
 
 type GetNFTReturnType = {
