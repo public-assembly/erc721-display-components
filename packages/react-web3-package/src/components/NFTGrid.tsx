@@ -5,7 +5,7 @@ import { useTokensQuery } from '../hooks'
 import { NFTGridLoadMore } from './NFTGridLoadMore'
 
 export interface NFTGridProps {
-  contractAddress?: string
+  contractAddress?: string | string[]
   ownerAddress?: string
   chainId?: '1' | '5'
   pageSize?: number

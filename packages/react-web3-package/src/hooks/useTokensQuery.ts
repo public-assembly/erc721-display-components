@@ -12,7 +12,7 @@ import {
 import { flatten } from 'lodash'
 import useSWRInfinite from 'swr/infinite'
 
-const PAGE_SIZE = 24
+const PAGE_SIZE = 12
 
 export type UseTokenQueryProps = {
   /**
@@ -28,7 +28,7 @@ export type UseTokenQueryProps = {
   where?: TokensQueryInput
   /**
    * pageSize: pagination length for request
-   * @default: 24
+   * @default: 12
    */
   pageSize?: number
 }

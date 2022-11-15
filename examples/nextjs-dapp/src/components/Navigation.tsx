@@ -4,7 +4,11 @@ import { useRouter } from "next/router"
 const pages = [
   {
     slug: '/',
-    title: '721 Filter'
+    title: 'Owned Nfts'
+  },
+  {
+    slug: '/contract-array',
+    title: 'Contract Array'
   },
 ]
 
