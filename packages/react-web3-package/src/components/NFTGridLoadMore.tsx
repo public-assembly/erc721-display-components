@@ -5,7 +5,7 @@ interface NFTGridLoadMoreProps {
   showObserver?: boolean
   isValidating?: boolean
   handleLoadMore?: () => void
-  loadingIndicator?: React.ReactNode
+  loadingIndicator?: React.ReactNode | string
 }
 
 export const NFTGridLoadMore = ({

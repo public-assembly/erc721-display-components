@@ -4,6 +4,17 @@ import { NFTProvider } from '../context'
 import { useTokensQuery } from '../hooks'
 import { NFTGridLoadMore } from './NFTGridLoadMore'
 
+export interface NFTGridProps {
+  contractAddress?: string
+  ownerAddress?: string
+  chainId?: '1' | '5'
+  pageSize?: number
+  useIntersectionObserver?: boolean
+  nftRenderer: React.ReactNode
+  loadingIndicator?: React.ReactNode | string
+  loadMoreButtonCta?: React.ReactNode | string
+}
+
 export function NFTGrid({
   contractAddress,
   ownerAddress,
@@ -11,14 +22,9 @@ export function NFTGrid({
   pageSize = 15,
   useIntersectionObserver = false,
   nftRenderer,
-}: {
-  contractAddress?: string
-  ownerAddress?: string
-  chainId?: '1' | '5'
-  pageSize?: number
-  useIntersectionObserver?: boolean
-  nftRenderer: React.ReactNode
-}) {
+  loadingIndicator = 'Loading',
+  loadMoreButtonCta = 'Load More',
+}: NFTGridProps) {
   const { data, isReachingEnd, isValidating, handleLoadMore } = useTokensQuery({
     contractAddress: contractAddress,
     ownerAddress: ownerAddress,
@@ -41,11 +47,15 @@ export function NFTGrid({
           ))}
       </div>
       {useIntersectionObserver && !isReachingEnd && (
-        <NFTGridLoadMore isValidating={isValidating} handleLoadMore={handleLoadMore} />
+        <NFTGridLoadMore
+          isValidating={isValidating}
+          loadingIndicator={loadingIndicator}
+          handleLoadMore={handleLoadMore}
+        />
       )}
       {!useIntersectionObserver && (
         <button className="nft-grid__button" onClick={handleLoadMore}>
-          {!isValidating ? 'Load More' : 'Loading'}
+          {!isValidating ? <>{loadMoreButtonCta}</> : <>{loadingIndicator}</>}
         </button>
       )}
     </div>

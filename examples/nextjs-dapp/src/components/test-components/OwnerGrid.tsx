@@ -27,6 +27,7 @@ export default function OwnerGrid() {
             ownerAddress={address}
             chainId={chain?.id.toString() as '1' | '5'}
             nftRenderer={<NFTCard />}
+            loadMoreButtonCta="Click to load more NFTs"
           />
         }
       </div>
