@@ -13,6 +13,8 @@ function NFTCard() {
 
 export default function OwnerGrid() {
   const { address, displayName, chain } = useAuth()
+  
+  console.log(chain?.id)
   return (
     <div className="flex flex-col relative">
       <div className="sticky top-4 z-50 pb-4">
@@ -23,6 +25,7 @@ export default function OwnerGrid() {
           <NFTGrid
             pageSize={12}
             ownerAddress={address}
+            chainId={chain?.id.toString() as '1' | '5'}
             nftRenderer={<NFTCard />}
           />
         }
