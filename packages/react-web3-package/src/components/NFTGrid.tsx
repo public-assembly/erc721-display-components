@@ -40,23 +40,14 @@ export function NFTGrid({
             </NFTProvider>
           ))}
       </div>
-      <div className="nft-grid__load-more-wrapper flex justify-center">
-        {useIntersectionObserver ? (
-          <>
-            {!isReachingEnd && (
-              <NFTGridLoadMore
-                showObserver
-                isValidating={isValidating}
-                handleLoadMore={handleLoadMore}
-              />
-            )}
-          </>
-        ) : (
-          <button className="nft-grid__button" onClick={handleLoadMore}>
-            Load More
-          </button>
-        )}
-      </div>
+      {useIntersectionObserver && !isReachingEnd && (
+        <NFTGridLoadMore isValidating={isValidating} handleLoadMore={handleLoadMore} />
+      )}
+      {!useIntersectionObserver && (
+        <button className="nft-grid__button" onClick={handleLoadMore}>
+          {!isValidating ? 'Load More' : 'Loading'}
+        </button>
+      )}
     </div>
   )
 }

@@ -23,7 +23,7 @@ export default function OwnerGrid() {
       <div className="relative z-10">
         {address &&
           <NFTGrid
-            pageSize={12}
+            pageSize={8}
             ownerAddress={address}
             chainId={chain?.id.toString() as '1' | '5'}
             nftRenderer={<NFTCard />}

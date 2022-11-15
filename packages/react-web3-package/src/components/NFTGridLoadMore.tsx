@@ -15,17 +15,20 @@ export const NFTGridLoadMore = ({
   loadingIndicator,
 }: NFTGridLoadMoreProps) => {
   const handleVisible = React.useCallback(() => {
-    if (showObserver && handleLoadMore) handleLoadMore()
+    handleLoadMore()
   }, [handleLoadMore, showObserver])
 
   return (
-    <div className={`relative mb-4 w-full ${isValidating && 'validating'}`}>
+    <div
+      className={`nft-grid__load-more relative mb-[20px] w-full ${
+        isValidating && 'validating'
+      }`}>
       {!isValidating && <LoadMoreObserver handleVisible={handleVisible} />}
       <div
-        className="align-center flex h-4 w-full flex-row justify-center py-4"
+        className="align-center flex h-[20px] w-full flex-row justify-center py-4"
         aria-hidden>
         {isValidating && (
-          <>{loadingIndicator ? loadingIndicator : <span>...loading...</span>}</>
+          <>{loadingIndicator ? loadingIndicator : <span>Loading</span>}</>
         )}
       </div>
     </div>
