@@ -1,6 +1,5 @@
 import React from 'react'
 import { NFTGrid } from '@public-assembly/erc721-filter'
-import { NFTCard } from '../NftCard'
 import { useAuth } from '../../hooks/useAuth'
 import { RawDisplayer } from '../RawDisplayer'
 
@@ -33,7 +32,6 @@ export default function OwnerGrid() {
               pageSize={8}
               contractAddress={contracts}
               chainId={chain?.id.toString() as '1' | '5'}
-              nftRenderer={<NFTCard />}
               useIntersectionObserver
             />
           </div>

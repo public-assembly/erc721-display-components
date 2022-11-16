@@ -1,6 +1,5 @@
 import { useAuth } from '../../hooks/useAuth'
 import { NFTGrid } from '@public-assembly/erc721-filter'
-import { NFTCard } from '../NftCard'
 
 export default function OwnerGrid() {
   const { address, displayName, chain } = useAuth()
@@ -16,7 +15,6 @@ export default function OwnerGrid() {
               pageSize={8}
               ownerAddress={address}
               chainId={chain?.id.toString() as '1' | '5'}
-              nftRenderer={<NFTCard />}
               loadMoreButtonCta="Click to load more NFTs"
             />
           </div>

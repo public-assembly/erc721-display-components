@@ -3,7 +3,7 @@ import { createContext, useContext } from 'react'
 import { NFTObject } from '@zoralabs/nft-hooks'
 
 export interface NFTContext {
-  nft?: NFTObject
+  nftData?: NFTObject
   tokenId?: string
   contractAddress?: string
 }
@@ -13,18 +13,18 @@ export type NFTProps = {
 } & NFTContext
 
 const NFTContext = createContext<NFTContext>({
-  nft: undefined,
+  nftData: undefined,
 })
 
 export function useNFTProvider() {
   return useContext(NFTContext)
 }
 
-export function NFTProvider({ contractAddress, tokenId, nft, children }: NFTProps) {
+export function NFTProvider({ contractAddress, tokenId, nftData, children }: NFTProps) {
   return (
     <NFTContext.Provider
       value={{
-        nft,
+        nftData,
         tokenId,
         contractAddress,
       }}>

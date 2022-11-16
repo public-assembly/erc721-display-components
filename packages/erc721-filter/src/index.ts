@@ -1,5 +1,5 @@
-import { NFTGridLoadMore, NFTGrid } from './components'
+import { NFTGridLoadMore, NFTGrid, NFTCard } from './components'
 import { useTokensQuery } from './hooks'
 import { NFTProvider, useNFTProvider } from './context'
 
-export { NFTGridLoadMore, NFTProvider, useNFTProvider, NFTGrid, useTokensQuery }
+export { NFTGrid, NFTGridLoadMore, NFTProvider, NFTCard, useNFTProvider, useTokensQuery }
