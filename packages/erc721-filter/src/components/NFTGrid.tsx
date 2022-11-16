@@ -6,8 +6,8 @@ import { NFTGridLoadMore } from './NFTGridLoadMore'
 
 export interface NFTGridProps {
   contractAddress?: string | string[]
-  ownerAddress?: string
   chainId?: '1' | '5'
+  ownerAddress?: string
   pageSize?: number
   useIntersectionObserver?: boolean
   nftRenderer: React.ReactNode
@@ -17,15 +17,15 @@ export interface NFTGridProps {
 
 export function NFTGrid({
   contractAddress,
-  ownerAddress,
   chainId = '1',
-  pageSize = 15,
+  ownerAddress,
+  pageSize,
   useIntersectionObserver = false,
   nftRenderer,
   loadingIndicator = 'Loading',
   loadMoreButtonCta = 'Load More',
 }: NFTGridProps) {
-  const { data, isReachingEnd, isValidating, handleLoadMore } = useTokensQuery({
+  const { data, isReachingEnd, isLoadingMore, handleLoadMore } = useTokensQuery({
     contractAddress: contractAddress,
     ownerAddress: ownerAddress,
     pageSize: pageSize,
@@ -48,14 +48,14 @@ export function NFTGrid({
       </div>
       {useIntersectionObserver && !isReachingEnd && (
         <NFTGridLoadMore
-          isValidating={isValidating}
+          isLoading={isLoadingMore}
           loadingIndicator={loadingIndicator}
           handleLoadMore={handleLoadMore}
         />
       )}
       {!useIntersectionObserver && (
         <button className="nft-grid__button" onClick={handleLoadMore}>
-          {!isValidating ? <>{loadMoreButtonCta}</> : <>{loadingIndicator}</>}
+          {!isLoadingMore ? <>{loadMoreButtonCta}</> : <>{loadingIndicator}</>}
         </button>
       )}
     </div>

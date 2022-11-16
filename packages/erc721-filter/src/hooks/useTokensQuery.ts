@@ -9,7 +9,7 @@ import {
   TokensQueryFilter,
   TokensQueryInput,
 } from '@zoralabs/zdk/dist/queries/queries-sdk'
-import { flatten } from 'lodash'
+import flatten from 'lodash/flatten'
 import useSWRInfinite from 'swr/infinite'
 
 const PAGE_SIZE = 12
@@ -62,7 +62,6 @@ export function useTokensQuery({
   async function getNFTs(query: TokensQueryArgs): Promise<GetNFTReturnType> {
     const resp = await zdk.tokens(query)
     const tokens = resp.tokens.nodes
-      /* @ts-ignore */
       .map((token) => transformNFTZDK(token, { rawData: token }))
       .map(prepareJson)
     return {
