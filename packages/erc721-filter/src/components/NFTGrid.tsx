@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { NFTProvider } from '../context'
-import { NFTCard } from './NFTCard'
 import { useTokensQuery } from '../hooks'
-import { NFTGridLoadMore } from './NFTGridLoadMore'
+import NFTCard from './NFTCard'
+import NFTGridLoadMore from './NFTGridLoadMore'
 
 export interface NFTGridProps extends React.HTMLAttributes<HTMLDivElement> {
   contractAddress?: string | string[]
@@ -13,9 +13,14 @@ export interface NFTGridProps extends React.HTMLAttributes<HTMLDivElement> {
   nftRenderer?: React.ReactNode
   loadingIndicator?: React.ReactNode | string
   loadMoreButtonCta?: React.ReactNode | string
+  colsSM?: string
+  colsMD?: string
+  colsLG?: string
+  colsXL?: string
+  colsXXL?: string
 }
 
-export function NFTGrid({
+export default function NFTGrid({
   contractAddress,
   chainId = '1',
   ownerAddress,
@@ -24,6 +29,11 @@ export function NFTGrid({
   nftRenderer = <NFTCard />,
   loadingIndicator = 'Loading',
   loadMoreButtonCta = 'Load More',
+  colsSM = '1',
+  colsMD = '2',
+  colsLG = '2',
+  colsXL = '3',
+  colsXXL = '4',
   ...props
 }: NFTGridProps) {
   const { data, isReachingEnd, isLoadingMore, handleLoadMore } = useTokensQuery({
@@ -36,7 +46,14 @@ export function NFTGrid({
   return (
     <div className="nft-grid__wrapper relative flex w-full flex-col gap-4">
       <div
-        className="nft-grid__token-grid grid gap-3 md:grid-cols-2 md:gap-4 2xl:grid-cols-4"
+        className={`
+          nft-grid__token-grid grid gap-4
+          grid-cols-${colsSM}
+          md:grid-cols-${colsMD}
+          lg:grid-cols-${colsLG}
+          xl:grid-cols-${colsXL}
+          2xl:grid-cols-${colsXXL}
+        `}
         {...props}>
         {data &&
           data.map((nft) => (

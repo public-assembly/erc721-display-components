@@ -1,3 +1,4 @@
-export { NFTGridLoadMore } from './NFTGridLoadMore'
-export { NFTGrid } from './NFTGrid'
-export { NFTCard } from './NFTCard'
+import NFTGrid from './NFTGrid'
+import NFTCard from './NFTCard'
+
+export { NFTGrid, NFTCard }

@@ -10,7 +10,7 @@ const GOERLI_CONTRACTS = [
 
 const MAINNET_CONTRACTS = [
   '0x5bbc122e437a0f418b64454de76a431658c5162b',
-  '0xfd05b04a0040325c0d975b89f6f3aeb188fb1fbd',
+  // '0xfd05b04a0040325c0d975b89f6f3aeb188fb1fbd',
 ]
 
 export default function OwnerGrid() {
@@ -33,6 +33,7 @@ export default function OwnerGrid() {
               contractAddress={contracts}
               chainId={chain?.id.toString() as '1' | '5'}
               useIntersectionObserver
+              colsXXL='6'
             />
           </div>
         </> : <h1 className="text-xl py-2 px-3" style={{backgroundColor: 'yellow'}}>Connect to view your nfts</h1>

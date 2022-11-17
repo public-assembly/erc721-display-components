@@ -7,11 +7,11 @@ interface NFTGridLoadMoreProps {
   handleLoadMore?: () => void
 }
 
-export const NFTGridLoadMore = ({
+export default function NFTGridLoadMore({
   isLoading,
   loadingIndicator,
   handleLoadMore,
-}: NFTGridLoadMoreProps) => {
+}: NFTGridLoadMoreProps) {
   const [ref, inView] = useInView({
     threshold: 0.25,
     rootMargin: '0px 0px 500px 0px',
