@@ -33,7 +33,6 @@ export default function OwnerGrid() {
               contractAddress={contracts}
               chainId={chain?.id.toString() as '1' | '5'}
               useIntersectionObserver
-              colsXXL='6'
             />
           </div>
         </> : <h1 className="text-xl py-2 px-3" style={{backgroundColor: 'yellow'}}>Connect to view your nfts</h1>

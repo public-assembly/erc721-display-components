@@ -3,6 +3,20 @@ import { NFTProvider } from '../context'
 import { useTokensQuery } from '../hooks'
 import NFTCard from './NFTCard'
 import NFTGridLoadMore from './NFTGridLoadMore'
+import { ImageProps } from './rendering-components/Image'
+
+/**
+ * TODO: allow user to set grid cols easily via props.
+ * 
+  export type NFTGridColumns = {
+    colsSM?: string
+    colsMD?: string
+    colsLG?: string
+    colsXL?: string
+    colsXXL?: string
+  }
+ * 
+ */
 
 export interface NFTGridProps extends React.HTMLAttributes<HTMLDivElement> {
   contractAddress?: string | string[]
@@ -13,11 +27,6 @@ export interface NFTGridProps extends React.HTMLAttributes<HTMLDivElement> {
   nftRenderer?: React.ReactNode
   loadingIndicator?: React.ReactNode | string
   loadMoreButtonCta?: React.ReactNode | string
-  colsSM?: string
-  colsMD?: string
-  colsLG?: string
-  colsXL?: string
-  colsXXL?: string
 }
 
 export default function NFTGrid({
@@ -26,16 +35,21 @@ export default function NFTGrid({
   ownerAddress,
   pageSize,
   useIntersectionObserver = false,
-  nftRenderer = <NFTCard />,
+  nftRenderer,
   loadingIndicator = 'Loading',
   loadMoreButtonCta = 'Load More',
-  colsSM = '1',
-  colsMD = '2',
-  colsLG = '2',
-  colsXL = '3',
-  colsXXL = '4',
+  /*
+  colsSM,
+  colsMD,
+  colsLG,
+  colsXL,
+  colsXXL,
+  */
+  transitionSpeed = 150,
+  useAspectRatio = false,
+  imageLoadingIndicator = false,
   ...props
-}: NFTGridProps) {
+}: NFTGridProps & ImageProps) {
   const { data, isReachingEnd, isLoadingMore, handleLoadMore } = useTokensQuery({
     contractAddress: contractAddress,
     ownerAddress: ownerAddress,
@@ -46,14 +60,13 @@ export default function NFTGrid({
   return (
     <div className="nft-grid__wrapper relative flex w-full flex-col gap-4">
       <div
-        className={`
-          nft-grid__token-grid grid gap-4
-          grid-cols-${colsSM}
-          md:grid-cols-${colsMD}
-          lg:grid-cols-${colsLG}
-          xl:grid-cols-${colsXL}
-          2xl:grid-cols-${colsXXL}
-        `}
+        className={`nft-grid__token-grid grid grid-cols-1 
+        gap-4
+        md:grid-cols-2
+        lg:grid-cols-3
+        xl:grid-cols-4
+        2xl:grid-cols-5
+      `}
         {...props}>
         {data &&
           data.map((nft) => (
@@ -62,7 +75,14 @@ export default function NFTGrid({
               contractAddress={nft?.nft?.contract.address}
               tokenId={nft?.nft?.tokenId}
               nftData={nft}>
-              {nftRenderer}
+              {nftRenderer ? (
+                nftRenderer
+              ) : (
+                <NFTCard
+                  transitionSpeed={transitionSpeed}
+                  useAspectRatio={useAspectRatio}
+                />
+              )}
             </NFTProvider>
           ))}
       </div>

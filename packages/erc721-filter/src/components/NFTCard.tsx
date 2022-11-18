@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useNFTProvider } from './../context/NFTProvider'
-
+import { ImageProps } from './rendering-components/Image'
 import { Image } from './rendering-components'
 
 export interface NFTCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -15,8 +15,11 @@ export default function NFTCard({
   showContractInfo = true,
   showTokenId = true,
   tokenIdPrefix = '#',
+  transitionSpeed = 150,
+  useAspectRatio = false,
+  imageLoadingIndicator = false,
   ...props
-}: NFTCardProps) {
+}: NFTCardProps & ImageProps) {
   const { nftData } = useNFTProvider()
 
   return (
