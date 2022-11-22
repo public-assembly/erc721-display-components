@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-dapp",
+  "name": "next",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,6 +12,7 @@
     "clean": "rimraf --no-glob .next node_modules"
   },
   "dependencies": {
+    "@public-assembly/erc721-display-components": "workspace:*",
     "@rainbow-me/rainbowkit": "^0.6.0",
     "@zoralabs/nft-hooks": "^1.1.10",
     "@zoralabs/zdk": "^2.2.0",
