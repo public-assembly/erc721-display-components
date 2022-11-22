@@ -6,20 +6,8 @@
   "main": "index.js",
   "author": "Public Assembly",
   "license": "MIT",
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
   "scripts": {
-    "build:packages": "preconstruct build",
-    "build:next": "yarn workspace nextjs-dapp run build",
-    "clean": "yarn clean:next && yarn clean:next && yarn clean:root",
-    "clean:root": "rimraf --no-glob ./.cache ./.yarn ./.parcel-cache node_modules",
-    "clean:next": "yarn workspace nextjs-dapp run clean",
-    "clean:react": "yarn workspace reactjs-dapp run clean",
-    "build:react": "yarn workspace reactjs-dapp run build",
-    "example:next": "preconstruct dev && yarn workspace nextjs-dapp run dev",
-    "example:react": "preconstruct dev && yarn workspace reactjs-dapp run dev",
+    "preinstall": "npx only-allow pnpm",
     "postinstall": "preconstruct dev",
     "prepare": "husky install",
     "pretty": "prettier --write .",

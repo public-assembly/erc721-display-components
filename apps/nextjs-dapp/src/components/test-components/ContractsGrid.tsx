@@ -16,16 +16,17 @@ const MAINNET_CONTRACTS = [
 export default function OwnerGrid() {
   const { chain } = useAuth()
 
-  const contracts = React.useMemo(() => 
-    chain?.id === 1 ? MAINNET_CONTRACTS : GOERLI_CONTRACTS
-  , [chain])
+  const contracts = React.useMemo(
+    () => (chain?.id === 1 ? MAINNET_CONTRACTS : GOERLI_CONTRACTS),
+    [chain]
+  )
 
   return (
     <div className="flex flex-col relative">
-      {chain ?
+      {chain ? (
         <>
           <div className="sticky top-4 z-50 pb-4">
-            <RawDisplayer data={{contracts}} />
+            <RawDisplayer data={{ contracts }} />
           </div>
           <div className="relative z-10">
             <NFTGrid
@@ -35,8 +36,12 @@ export default function OwnerGrid() {
               useIntersectionObserver
             />
           </div>
-        </> : <h1 className="text-xl py-2 px-3" style={{backgroundColor: 'yellow'}}>Connect to view your nfts</h1>
-      }
+        </>
+      ) : (
+        <h1 className="text-xl py-2 px-3" style={{ backgroundColor: 'yellow' }}>
+          Connect to view your nfts
+        </h1>
+      )}
     </div>
   )
 }

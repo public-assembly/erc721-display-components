@@ -5,17 +5,17 @@ import { publicProvider } from 'wagmi/providers/public'
 import { SWRConfig } from 'swr'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 
-
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.goerli],
   [
     jsonRpcProvider({
       priority: 0,
-      rpc: (chain) => (chain.id === 1 ? 
-        {http: "https://rpc.ankr.com/eth"} :
-        {http: "https://rpc.ankr.com/eth_goerli"}   
-      )}),
-    publicProvider()
+      rpc: (chain) =>
+        chain.id === 1
+          ? { http: 'https://rpc.ankr.com/eth' }
+          : { http: 'https://rpc.ankr.com/eth_goerli' },
+    }),
+    publicProvider(),
   ]
 )
 
@@ -43,8 +43,7 @@ export function AppWrapper({ children }: { children: JSX.Element }) {
         })}>
         <SWRConfig
           value={{
-            fetcher: (resource, init) =>
-              fetch(resource, init).then((res) => res.json()),
+            fetcher: (resource, init) => fetch(resource, init).then((res) => res.json()),
           }}>
           {children}
         </SWRConfig>

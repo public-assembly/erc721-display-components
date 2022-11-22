@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic"
+import dynamic from 'next/dynamic'
 
 const OwnerGrid = dynamic(() => import('./../components/test-components/OwnerGrid'), {
   ssr: false,

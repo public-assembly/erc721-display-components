@@ -5,10 +5,12 @@ export default function OwnerGrid() {
   const { address, displayName, chain } = useAuth()
   return (
     <div className="flex flex-col relative">
-      {address ?
+      {address ? (
         <>
           <div className="sticky top-4 z-50 pb-4">
-            <h1 className="text-xl py-2 px-3" style={{backgroundColor: 'yellow'}}>{chain?.name} NFTs | {displayName}</h1>
+            <h1 className="text-xl py-2 px-3" style={{ backgroundColor: 'yellow' }}>
+              {chain?.name} NFTs | {displayName}
+            </h1>
           </div>
           <div className="relative z-10">
             <NFTGrid
@@ -18,8 +20,12 @@ export default function OwnerGrid() {
               loadMoreButtonCta="Click to load more NFTs"
             />
           </div>
-        </> : <h1 className="text-xl py-2 px-3" style={{backgroundColor: 'yellow'}}>Connect to view your nfts</h1>
-      }
+        </>
+      ) : (
+        <h1 className="text-xl py-2 px-3" style={{ backgroundColor: 'yellow' }}>
+          Connect to view your nfts
+        </h1>
+      )}
     </div>
   )
 }
