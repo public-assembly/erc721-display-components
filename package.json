@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "erc721-filter",
+  "name": "erc721-display-components",
   "version": "1.0.0",
-  "description": "Look at tokens now",
+  "description": "React components and hooks to display erc721 tokens leveraging the Zora Api.",
   "main": "index.js",
   "author": "Public Assembly",
   "license": "MIT",
