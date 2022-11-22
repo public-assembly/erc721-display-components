@@ -17,7 +17,7 @@
     "prepare": "husky install",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "version-packages": "changeset version",
-    "release": "preconstruct build && changeset && changeset publish"
+    "release": "preconstruct build && changeset version && changeset publish"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
