@@ -93,7 +93,7 @@ importers:
       tailwindcss: 3.2.4_postcss@8.4.19
       typescript: 4.9.3
 
-  packages/erc721-filter:
+  packages/erc721-display-components:
     specifiers:
       '@ethersproject/address': ^5.7.0
       '@types/lodash': ^4.14.186

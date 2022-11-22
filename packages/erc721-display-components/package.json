@@ -1,19 +1,17 @@
 {
-  "name": "@public-assembly/erc721-filter",
+  "name": "@public-assembly/erc721-display-components",
   "version": "0.0.1",
-  "description": "Filter those tokens",
-  "main": "dist/public-assembly-erc721-filter.cjs.js",
-  "module": "dist/public-assembly-erc721-filter.esm.js",
+  "description": "React components and hooks to display erc721 tokens leveraging the Zora Api.",
   "author": "Public Assembly",
   "license": "MIT",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/public-assembly/erc721-filter",
-    "directory": "packages/erc721-filter"
+    "url": "https://github.com/public-assembly/erc721-display-components",
+    "directory": "packages/erc721-display-components"
   },
   "files": [
-    "/dist"
+    "dist/**"
   ],
   "peerDependencies": {
     "@zoralabs/nft-hooks": "^1.1.9",

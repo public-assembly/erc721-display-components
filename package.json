@@ -8,6 +8,8 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "build": "turbo run build",
+    "build:package": "turbo run build --filter=@public-assembly/erc721-display-components",
     "postinstall": "preconstruct dev",
     "prepare": "husky install",
     "pretty": "prettier --write .",
