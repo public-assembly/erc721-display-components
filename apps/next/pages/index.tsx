@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import { Seo } from '@/components/Seo'
 
 const OwnerGrid = dynamic(() => import('./../components/test-components/OwnerGrid'), {
   ssr: false,
@@ -7,6 +8,7 @@ const OwnerGrid = dynamic(() => import('./../components/test-components/OwnerGri
 function Page() {
   return (
     <section className="flex flex-col gap-4">
+      <Seo />
       <OwnerGrid />
     </section>
   )
