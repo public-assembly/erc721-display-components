@@ -1,5 +1,5 @@
 import { useAuth } from '../../hooks/useAuth'
-import { NFTGrid } from '@public-assembly/erc721-filter'
+import { NFTGrid } from '@public-assembly/erc721-display-components'
 
 export default function OwnerGrid() {
   const { address, displayName, chain } = useAuth()

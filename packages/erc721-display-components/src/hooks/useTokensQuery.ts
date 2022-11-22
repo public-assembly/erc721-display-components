@@ -31,6 +31,12 @@ export type UseTokenQueryProps = {
    * @default: 12
    */
   pageSize?: number
+  /**
+   * zoraApiKey: user api key for the zora api.
+   * https://docs.zora.co/docs/zora-api/intro#authentication
+   * @default: undefined
+   */
+  zoraApiKey?: string
 }
 
 type GetNFTReturnType = {
@@ -47,10 +53,11 @@ export function useTokensQuery({
   filter,
   where,
   pageSize = PAGE_SIZE,
+  zoraApiKey,
 }: UseTokenQueryProps) {
   const zdk = new ZDK({
     endpoint: 'https://api.zora.co/graphql',
-    apiKey: process.env.NEXT_PUBLIC_ZORA_API_KEY,
+    apiKey: zoraApiKey,
     networks: [
       {
         chain: ZDKChain[`${chainId === '5' ? 'Goerli' : 'Mainnet'}`],

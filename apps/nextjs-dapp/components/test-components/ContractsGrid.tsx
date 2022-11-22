@@ -1,5 +1,5 @@
 import React from 'react'
-import { NFTGrid } from '@public-assembly/erc721-filter'
+import { NFTGrid } from '@public-assembly/erc721-display-components'
 import { useAuth } from '../../hooks/useAuth'
 import { RawDisplayer } from '../RawDisplayer'
 
