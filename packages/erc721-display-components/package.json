@@ -1,6 +1,6 @@
 {
   "name": "@public-assembly/erc721-display-components",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React components and hooks to display erc721 tokens leveraging the Zora Api.",
   "main": "dist/public-assembly-erc721-display-components.cjs.js",
   "module": "dist/public-assembly-erc721-display-components.esm.js",
