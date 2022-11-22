@@ -1,3 +1,3 @@
-import { placeHolderImage } from './placeholderImage'
+import { placeHolderImage } from './placeHolderImage'
 
 export { placeHolderImage }
