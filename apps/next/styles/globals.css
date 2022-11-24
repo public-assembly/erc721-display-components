@@ -35,3 +35,15 @@ main {
   line-height: 1.25;
   font-size: 12px;
 }
+
+/* MARKDOWN */
+.markdown-renderer * {
+  color: var(--text-color);
+  font-family: courier;
+}
+
+.markdown-renderer h1 {
+  font-size: 35px;
+  color: var(--text-color);
+  font-family: cursive;
+}
