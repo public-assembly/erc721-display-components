@@ -2,6 +2,11 @@ import * as React from 'react'
 import { NFTProvider } from '../context'
 import { useTokensQuery } from '../hooks'
 import NFTCard from './NFTCard'
+import {
+  SortDirection,
+  TokenSortKey,
+  TokenSortInput,
+} from '@zoralabs/zdk/dist/queries/queries-sdk'
 import NFTGridLoadMore from './NFTGridLoadMore'
 import { ImageProps } from './rendering-components/Image'
 
@@ -18,6 +23,18 @@ import { ImageProps } from './rendering-components/Image'
  * 
  */
 
+const sortNewest = {
+  sortDirection: SortDirection.Desc,
+  sortKey: TokenSortKey.None,
+  sortAxis: null,
+} as TokenSortInput
+
+const sortOldest = {
+  sortDirection: SortDirection.Asc,
+  sortKey: TokenSortKey.None,
+  sortAxis: null,
+} as TokenSortInput
+
 export interface NFTGridProps extends React.HTMLAttributes<HTMLDivElement> {
   contractAddress?: string | string[]
   chainId?: '1' | '5'
@@ -27,6 +44,7 @@ export interface NFTGridProps extends React.HTMLAttributes<HTMLDivElement> {
   nftRenderer?: React.ReactNode
   loadingIndicator?: React.ReactNode | string
   loadMoreButtonCta?: React.ReactNode | string
+  sortDirection?: 'Newest' | 'Oldest'
 }
 
 export default function NFTGrid({
@@ -48,6 +66,7 @@ export default function NFTGrid({
   transitionSpeed = 150,
   useAspectRatio = false,
   imageLoadingIndicator = false,
+  sortDirection = 'Newest',
   ...props
 }: NFTGridProps & ImageProps) {
   const { data, isReachingEnd, isLoadingMore, handleLoadMore } = useTokensQuery({
@@ -55,6 +74,7 @@ export default function NFTGrid({
     ownerAddress: ownerAddress,
     pageSize: pageSize,
     chainId: chainId,
+    sort: sortDirection === 'Newest' ? sortNewest : sortOldest,
   })
 
   return (
