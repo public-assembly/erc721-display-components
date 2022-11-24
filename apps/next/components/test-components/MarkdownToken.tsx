@@ -1,5 +1,10 @@
 import React from 'react'
-import { useToken, UseTokenProps, NFTProvider, NFTCard } from '@public-assembly/erc721-display-components'
+import {
+  useToken,
+  UseTokenProps,
+  NFTProvider,
+  NFTCard,
+} from '@public-assembly/erc721-display-components'
 import { RawDisplayer } from '../RawDisplayer'
 import { addIPFSGateway } from '@/lib/addIPFSGateway'
 
@@ -15,11 +20,22 @@ export default function MarkdownToken({
     tokenId: tokenId,
     chainId: chainId,
   })
-  
+
+  const [tokenData, setTokenData] = React.useState<any>()
+
+  React.useEffect(() => {
+    const getMarkdown = async () => {
+      await fetch(addIPFSGateway(data?.metadata?.contentUri))
+        .then((response) => response.text())
+        .then((data) => setTokenData(data))
+    }
+    getMarkdown()
+  }, [data?.metadata?.contentUri])
+
   return (
     <div {...props}>
-      {data &&
-        <div className='grid lg:grid-cols-5 gap-6'>
+      {data && (
+        <div className="grid lg:grid-cols-5 gap-6">
           <div className="lg:col-span-1">
             <NFTProvider
               contractAddress={contractAddress}
@@ -28,12 +44,12 @@ export default function MarkdownToken({
               <NFTCard />
             </NFTProvider>
           </div>
-          <div className="lg:col-span-4">
-            <div dangerouslySetInnerHTML={{__html: addIPFSGateway(data?.metadata?.contentUri)}}/>
+          <div className="lg:col-span-4 gap-6 flex flex-col">
+            <div dangerouslySetInnerHTML={{ __html: tokenData }} />
             <RawDisplayer data={{ data, error }} />
           </div>
         </div>
-      }
+      )}
     </div>
   )
 }

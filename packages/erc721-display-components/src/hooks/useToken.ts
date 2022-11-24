@@ -15,7 +15,12 @@ export type UseTokenProps = {
 
 /* { address: contractAddress, tokenId: tokenId } */
 
-export function useToken({ contractAddress, tokenId, zoraApiKey, chainId }: UseTokenProps) {
+export function useToken({
+  contractAddress,
+  tokenId,
+  zoraApiKey,
+  chainId,
+}: UseTokenProps) {
   const zdk = new ZDK({
     endpoint: 'https://api.zora.co/graphql',
     apiKey: zoraApiKey,
@@ -31,15 +36,15 @@ export function useToken({ contractAddress, tokenId, zoraApiKey, chainId }: UseT
     const resp = await zdk.token({
       token: {
         address: contractAddress,
-        tokenId: tokenId
+        tokenId: tokenId,
       },
       network: chainId as NetworkInput,
-      includeFullDetails: true
-    });
+      includeFullDetails: true,
+    })
     const token = resp?.token
     return transformNFTZDK(token, { rawData: token })
   }
-  
+
   const { data, error } = useSWR(
     [`${contractAddress}-${tokenId}`],
     () => getNFT(contractAddress, tokenId),

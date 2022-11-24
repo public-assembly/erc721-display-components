@@ -5,7 +5,7 @@ import NFTCard from './NFTCard'
 import {
   SortDirection,
   TokenSortKey,
-  TokenSortInput
+  TokenSortInput,
 } from '@zoralabs/zdk/dist/queries/queries-sdk'
 import NFTGridLoadMore from './NFTGridLoadMore'
 import { ImageProps } from './rendering-components/Image'
@@ -74,7 +74,7 @@ export default function NFTGrid({
     ownerAddress: ownerAddress,
     pageSize: pageSize,
     chainId: chainId,
-    sort: sortDirection === 'Newest' ? sortNewest : sortOldest
+    sort: sortDirection === 'Newest' ? sortNewest : sortOldest,
   })
 
   return (
