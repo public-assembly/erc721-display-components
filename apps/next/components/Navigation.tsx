@@ -10,6 +10,10 @@ const pages = [
     slug: '/contract-array',
     title: 'Contract Array',
   },
+  {
+    slug: '/markdown-token',
+    title: 'Markdown Token',
+  },
 ]
 
 export function Navigation() {

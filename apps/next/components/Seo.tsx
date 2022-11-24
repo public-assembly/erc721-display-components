@@ -1,11 +1,5 @@
-import NextHead from "next/head";
-import {
-  APP_TITLE,
-  APP_DESCRIPTION,
-  OG_IMAGE,
-  FAVICON,
-  BASE_URL,
-} from "@/lib/seo";
+import NextHead from 'next/head'
+import { APP_TITLE, APP_DESCRIPTION, OG_IMAGE, FAVICON, BASE_URL } from '@/lib/seo'
 
 export const Seo = ({
   title,
@@ -13,10 +7,10 @@ export const Seo = ({
   url,
   ogImage,
 }: {
-  title?: string;
-  description?: string;
-  url?: string;
-  ogImage?: string;
+  title?: string
+  description?: string
+  url?: string
+  ogImage?: string
 }) => (
   <NextHead>
     <meta charSet="UTF-8" />
@@ -25,7 +19,7 @@ export const Seo = ({
     <meta name="description" content={description || APP_DESCRIPTION} />
     <link rel="icon" type="image/png" sizes="24x24" href={FAVICON} />
     <meta property="og:url" content={url || BASE_URL} />
-    <meta property="og:title" content={title || ""} />
+    <meta property="og:title" content={title || ''} />
     <meta property="og:description" content={description || APP_DESCRIPTION} />
     <meta name="twitter:site" content={url || BASE_URL} />
     <meta name="twitter:card" content="summary_large_image" />
@@ -34,4 +28,4 @@ export const Seo = ({
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
   </NextHead>
-);
+)
