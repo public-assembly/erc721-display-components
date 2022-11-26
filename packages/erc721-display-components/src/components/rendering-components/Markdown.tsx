@@ -5,9 +5,9 @@ import ReactMarkdown from 'react-markdown'
 
 export interface MarkdownProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export default function Markdown({...props}: MarkdownProps) {
+export default function Markdown({ ...props }: MarkdownProps) {
   const { nftData } = useNFTProvider()
-  
+
   const [tokenData, setTokenData] = React.useState<any>()
 
   React.useEffect(() => {
