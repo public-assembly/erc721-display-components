@@ -1,3 +1,3 @@
 import { placeHolderImage } from './placeHolderImage'
-
-export { placeHolderImage }
+import { addIPFSGateway } from './addIPFSGateway'
+export { placeHolderImage, addIPFSGateway }
