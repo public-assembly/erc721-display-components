@@ -37,12 +37,12 @@ main {
 }
 
 /* MARKDOWN */
-.markdown-renderer * {
+.nft-renderer__markdown-wrapper * {
   color: var(--text-color);
   font-family: courier;
 }
 
-.markdown-renderer h1 {
+.nft-renderer__markdown-wrapper h1 {
   font-size: 35px;
   color: var(--text-color);
   font-family: cursive;

@@ -5,7 +5,7 @@ const nextConfig = {
   target: 'serverless',
   experimental: {
     externalDir: true,
-  }
+  },
 }
 
 module.exports = nextConfig
