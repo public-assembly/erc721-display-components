@@ -1,11 +1,8 @@
 import dynamic from 'next/dynamic'
 
-const AudioToken = dynamic(
-  () => import('./../components/test-components/AudioToken'),
-  {
-    ssr: false,
-  }
-)
+const AudioToken = dynamic(() => import('./../components/test-components/AudioToken'), {
+  ssr: false,
+})
 
 function Page() {
   return (
