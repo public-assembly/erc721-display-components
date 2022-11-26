@@ -14,6 +14,10 @@ const pages = [
     slug: '/markdown-token',
     title: 'Markdown Token',
   },
+  {
+    slug: '/audio-token',
+    title: 'Audio Token',
+  },
 ]
 
 export function Navigation() {
