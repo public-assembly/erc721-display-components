@@ -15,7 +15,7 @@ For documentation and examples, visit [erc721-display.public---assembly.com](htt
 
 ## Styling
 
-While usage is not manditory, components leverage tailwind-css and inlude component specific selectors for ease of styling.
+While usage is not mandatory, components leverage tailwind-css and inlude component specific selectors for ease of styling.
 
 ## Installation
 
