@@ -6,7 +6,6 @@ import {
   NFTCard,
   Renderer,
 } from '@public-assembly/erc721-display-components'
-import { RawDisplayer } from '../RawDisplayer'
 
 export default function MarkdownToken({
   contractAddress,
