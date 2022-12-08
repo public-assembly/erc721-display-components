@@ -15,6 +15,10 @@ const pages = [
     title: 'Markdown Token',
   },
   {
+    slug: '/promote-to-edition',
+    title: 'Edition?',
+  },
+  {
     slug: '/audio-token',
     title: 'Audio Token',
   },
